@@ -1,0 +1,22 @@
+{
+  "computer_networks": [
+    {"question": "What is a LAN?", "answer": "Local Area Network"},
+    {"question": "What is TCP/IP?", "answer": "A communication protocol suite"}
+  ],
+  "mobile_computing": [
+    {"question": "What is mobile computing?", "answer": "Accessing services via mobile devices"},
+    {"question": "Define 4G.", "answer": "Fourth generation mobile network"}
+  ],
+  "applications_of_information_and_technology": [
+    {"question": "Give an example of IT application in healthcare.", "answer": "Electronic health records"},
+    {"question": "What is e-learning?", "answer": "Learning using electronic devices"}
+  ],
+  "software_engineering": [
+    {"question": "What is SDLC?", "answer": "Software Development Life Cycle"},
+    {"question": "Define agile methodology.", "answer": "Iterative development process"}
+  ],
+  "computer_organization_and_administration": [
+    {"question": "What is CPU?", "answer": "Central Processing Unit"},
+    {"question": "Define RAM.", "answer": "Random Access Memory"}
+  ]
+}

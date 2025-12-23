@@ -133,6 +133,7 @@ class DBService {
       return all.where((c) => c.deckId == deckId).toList();
     });
   }
+
 }
 
 // --- UI COMPONENTS ---
@@ -370,6 +371,8 @@ class _StudyScreenState extends State<StudyScreen> {
     );
   }
 
+
+
   Widget _quizView(Flashcard c, List<Flashcard> all) {
     final opts = [c.answer];
     final dist = all.where((x) => x.id != c.id).map((x) => x.answer).toList()..shuffle();
@@ -419,33 +422,39 @@ class _StudyScreenState extends State<StudyScreen> {
   );
 }
 
+
 // --- APP ENTRY ---
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    final config = jsonDecode(_firebaseConfigStr);
-    await Firebase.initializeApp(
-      options: FirebaseOptions(
-        apiKey: config['apiKey'] ?? '',
-        appId: _appIdEnv,
-        messagingSenderId: config['messagingSenderId'] ?? '',
-        projectId: config['projectId'] ?? '',
-        storageBucket: config['storageBucket'] ?? '',
-      ),
-    );
-  } catch (e) {
-    debugPrint("Init Error: $e");
-  }
+
+  final config = jsonDecode(_firebaseConfigStr);
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: config['apiKey'] ?? '',
+      appId: _appIdEnv,
+      messagingSenderId: config['messagingSenderId'] ?? '',
+      projectId: config['projectId'] ?? '',
+      storageBucket: config['storageBucket'] ?? '',
+    ),
+  );
+
+
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthService()),
         Provider(create: (_) => DBService()),
       ],
-      child: const MaterialApp(debugShowCheckedModeBanner: false, home: Root()),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Root(),
+      ),
     ),
   );
 }
+
+
 
 class Root extends StatelessWidget {
   const Root({super.key});
