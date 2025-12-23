@@ -30,7 +30,7 @@ jobs:
 
       # 4. Install Dependencies
       - name: Install dependencies
-         run: |
+         run |
           flutter pub cache repair
           flutter pub get
 
