@@ -30,7 +30,9 @@ jobs:
 
       # 4. Install Dependencies
       - name: Install dependencies
-        run: flutter pub get
+         run: |
+          flutter pub cache repair
+          flutter pub get
 
       # 5. Run Linter
       - name: Analyze code
