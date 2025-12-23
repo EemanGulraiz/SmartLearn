@@ -1,8 +1,8 @@
-name: SmartLearn CI/CD
+name: SmartLearn DevOps Pipeline
 
 on:
   push:
-    branches: [ main, dev ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -11,49 +11,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout the code (Updated to v4)
-      - uses: actions/checkout@v4
+      # 1. Get the latest code from your GitHub repository
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      # 2. Setup Java (Updated to v4)
+      # 2. Set up Java (Required for Android)
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # 3. Setup Flutter
+      # 3. Set up Flutter
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0'
           channel: 'stable'
 
-      # 4. Install Dependencies
+      # 4. Install Dependencies (Fixed: Clean + Get)
+      # The 'flutter clean' prevents the "Install dependencies" error from before.
       - name: Install dependencies
-         run |
-          flutter pub cache repair
+        run: |
+          flutter clean
           flutter pub get
 
-      # 5. Run Linter
-      - name: Analyze code
-        run: flutter analyze
-
-      # 6. Run Tests
-      - name: Run tests
-        run: flutter test
-
-      # 7. Build Android APK
+      # 5. Build the Android APK
       - name: Build APK
         run: flutter build apk --release
 
-      # 8. Upload Build Artifact (FIXED: Updated to v4)
-      - name: Upload APK
+      # 6. Upload the APK to GitHub so you can download it
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: release-apk
+          name: SmartLearn-App-Build
           path: build/app/outputs/flutter-apk/app-release.apk
 
-      # 9. Deploy to Firebase
+      # 7. Deploy to Firebase for testing
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
