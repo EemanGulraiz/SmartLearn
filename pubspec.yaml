@@ -34,10 +34,11 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.1.1
-  firebase_core: ^2.24.2
-  firebase_auth: ^4.15.3
-  cloud_firestore: ^4.13.6
-  cupertino_icons: ^1.0.6 #sed for managing the AuthService and app state  cupertino_icons: ^1.0.8
+  firebase_core: ^3.0.0
+  firebase_auth: ^5.0.0
+  cloud_firestore: ^5.0.0
+  cupertino_icons: ^1.0.6
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:

@@ -18,5 +18,6 @@
   "computer_organization_and_administration": [
     {"question": "What is CPU?", "answer": "Central Processing Unit"},
     {"question": "Define RAM.", "answer": "Random Access Memory"}
+
   ]
 }
