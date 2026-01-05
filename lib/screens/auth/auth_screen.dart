@@ -143,13 +143,13 @@ class _AuthScreenState extends State<AuthScreen> {
                   onPressed: () {
                     if (!isLogin) {
                       // Validate First Name
-                      if (f.text.isEmpty || !RegExp(r'^[a-zA-Z0-9]+$').hasMatch(f.text) || !RegExp(r'[a-zA-Z]').hasMatch(f.text)) {
-                        auth.setError("First Name must be alphanumeric and contain at least one letter.");
+                      if (f.text.isEmpty || !RegExp(r'^[a-zA-Z]+$').hasMatch(f.text)) {
+                        auth.setError("First Name must contain only alphabets.");
                         return;
                       }
                       // Validate Last Name
-                      if (l.text.isEmpty || !RegExp(r'^[a-zA-Z0-9]+$').hasMatch(l.text) || !RegExp(r'[a-zA-Z]').hasMatch(l.text)) {
-                        auth.setError("Last Name must be alphanumeric and contain at least one letter.");
+                      if (l.text.isEmpty || !RegExp(r'^[a-zA-Z]+$').hasMatch(l.text)) {
+                        auth.setError("Last Name must contain only alphabets.");
                         return;
                       }
                       // Validate Email
